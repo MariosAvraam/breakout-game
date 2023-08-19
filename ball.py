@@ -8,10 +8,10 @@ class Ball:
         self.ball.color("white")
         self.ball.penup()
         self.ball.goto(0, 0)
-        self.ball.dx = 2  # Delta/change in x - controls the ball's x direction
-        self.ball.dy = 2  # Delta/change in y - controls the ball's y direction
+        self.ball.dx = 3  # Delta/change in x - controls the ball's x direction
+        self.ball.dy = 3  # Delta/change in y - controls the ball's y direction
 
-    def move(self, paddle, bricks):
+    def move(self, paddle, bricks, scoreboard):
         # Move the ball based on its dx and dy
         x = self.ball.xcor() + self.ball.dx
         y = self.ball.ycor() + self.ball.dy
@@ -20,11 +20,6 @@ class Ball:
         # Top Wall
         if y > 215:
             y = 215
-            self.ball.dy *= -1  # Reverse the y direction
-
-        # Bottom Wall
-        if y < -210:
-            y = -210
             self.ball.dy *= -1  # Reverse the y direction
 
         # Right Wall
@@ -52,9 +47,16 @@ class Ball:
         # Ball-Brick Collision
         for brick in bricks:
             if (self.ball.distance(brick.brick) < 25):
-                brick.brick.hideturtle()  # Remove the brick from the screen
-                bricks.remove(brick)      # Remove the brick from the list
+                brick.brick.hideturtle()
+                bricks.remove(brick)
+                scoreboard.add_point()
+
                 self.ball.dy *= -1        # Reverse the ball's y-direction
                 break  # Exit the loop once a collision is detected
+
+        # Check if ball misses the paddle and goes out of bounds
+        if self.ball.ycor() < -240:
+            return "Game Over"
+
 
     # ... (More methods related to ball collision will be added later)
