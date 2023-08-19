@@ -8,7 +8,7 @@ Breakout is a classic arcade game, originally developed and published by Atari i
 - Game Over and Winning notifications.
 
 ## Installation
-1. Ensure you have Python installed on your machine. If not, download it from python.org.
+1. Ensure you have Python installed on your machine.
 
 2. Clone this repository:
 ```bash
