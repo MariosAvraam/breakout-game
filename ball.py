@@ -8,10 +8,10 @@ class Ball:
         self.ball.color("white")
         self.ball.penup()
         self.ball.goto(0, 0)
-        self.ball.dx = 1  # Delta/change in x - controls the ball's x direction
-        self.ball.dy = 1  # Delta/change in y - controls the ball's y direction
+        self.ball.dx = 2  # Delta/change in x - controls the ball's x direction
+        self.ball.dy = 2  # Delta/change in y - controls the ball's y direction
 
-    def move(self):
+    def move(self, paddle):
         # Move the ball based on its dx and dy
         x = self.ball.xcor() + self.ball.dx
         y = self.ball.ycor() + self.ball.dy
@@ -39,4 +39,14 @@ class Ball:
         
         self.ball.setx(x)
         self.ball.sety(y)
+
+         # Ball-Paddle Collision
+        if (self.ball.dy < 0 and  # Ensure the ball is moving downward
+            self.ball.ycor() - 10 <= paddle.paddle.ycor() + 10 and
+            self.ball.xcor() > paddle.paddle.xcor() - 50 and
+            self.ball.xcor() < paddle.paddle.xcor() + 50):
+            
+            self.ball.sety(paddle.paddle.ycor() + 20)  # Position the ball slightly above the paddle
+            self.ball.dy *= -1  # Reverse the y direction
+
     # ... (More methods related to ball collision will be added later)

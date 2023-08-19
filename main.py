@@ -22,7 +22,7 @@ screen.onkeypress(paddle.move_right, "Right")
 
 # Main game loop
 while True:
-    ball.move()
+    ball.move(paddle)
     screen.update()
     turtle.time.sleep(0.017)  # 60 frames per second
 
