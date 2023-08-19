@@ -20,7 +20,7 @@ ball = Ball()
 # Create bricks
 bricks = []
 number_of_bricks_per_row = 10
-number_of_rows = 4  # Adjust this to add more rows
+number_of_rows = 3  # Adjust this to add more rows
 brick_width = 60
 total_bricks_width = number_of_bricks_per_row * brick_width
 starting_x = -total_bricks_width / 2 + brick_width / 2  - 4
@@ -49,6 +49,11 @@ game_state = ""
 while game_state != "Game Over":
     screen.update()
     game_state = ball.move(paddle, bricks, scoreboard)
+    if not bricks:
+        scoreboard.congratulate()
+        screen.update()
+        screen.exitonclick()  # Wait for user click before closing the window
+
     turtle.time.sleep(0.017)  # 60 frames per second
 
 # Display Game Over message

@@ -22,3 +22,8 @@ class Scoreboard:
     def game_over(self):
         self.display.goto(0, 0)
         self.display.write("Game Over", align="center", font=("Courier", 36, "normal"))
+
+    def congratulate(self):
+        self.display.clear()
+        self.display.goto(0, 0)
+        self.display.write("Well Done!", align="center", font=("Courier", 36, "normal"))
