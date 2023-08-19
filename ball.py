@@ -11,7 +11,7 @@ class Ball:
         self.ball.dx = 2  # Delta/change in x - controls the ball's x direction
         self.ball.dy = 2  # Delta/change in y - controls the ball's y direction
 
-    def move(self, paddle):
+    def move(self, paddle, bricks):
         # Move the ball based on its dx and dy
         x = self.ball.xcor() + self.ball.dx
         y = self.ball.ycor() + self.ball.dy
@@ -48,5 +48,13 @@ class Ball:
             
             self.ball.sety(paddle.paddle.ycor() + 20)  # Position the ball slightly above the paddle
             self.ball.dy *= -1  # Reverse the y direction
+
+        # Ball-Brick Collision
+        for brick in bricks:
+            if (self.ball.distance(brick.brick) < 25):
+                brick.brick.hideturtle()  # Remove the brick from the screen
+                bricks.remove(brick)      # Remove the brick from the list
+                self.ball.dy *= -1        # Reverse the ball's y-direction
+                break  # Exit the loop once a collision is detected
 
     # ... (More methods related to ball collision will be added later)
