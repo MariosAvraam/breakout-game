@@ -44,7 +44,31 @@ screen.listen()
 screen.onkeypress(paddle.move_left, "Left")
 screen.onkeypress(paddle.move_right, "Right")
 
+start_message = turtle.Turtle()
+start_message.speed(0)
+start_message.color("white")
+start_message.penup()
+start_message.hideturtle()
+start_message.goto(0, 0)
+start_message.write("Press 'S' to Start", align="center", font=("Courier", 36, "normal"))
+def start_game():
+    global game_started
+    start_message.clear()
+    game_started = True
 
+game_started = False
+
+# Set up the keyboard bindings
+screen.listen()
+screen.onkeypress(lambda: paddle.move_left(game_started), "Left")
+screen.onkeypress(lambda: paddle.move_right(game_started), "Right")
+screen.onkeypress(start_game, "s")
+
+# Wait for the game to start
+while not game_started:
+    screen.update()
+
+# Main game loop
 game_state = ""
 while game_state != "Game Over":
     screen.update()
@@ -53,7 +77,6 @@ while game_state != "Game Over":
         scoreboard.congratulate()
         screen.update()
         screen.exitonclick()  # Wait for user click before closing the window
-
     turtle.time.sleep(0.017)  # 60 frames per second
 
 # Display Game Over message
@@ -61,4 +84,3 @@ scoreboard.game_over()
 
 # Keep the window open until it's clicked
 screen.exitonclick()
-
