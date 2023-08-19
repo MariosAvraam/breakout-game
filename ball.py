@@ -16,8 +16,8 @@ class Ball:
         self.ball.color("white")
         self.ball.penup()
         self.ball.goto(0, 0)
-        self.ball.dx = 3  # Delta/change in x - controls the ball's x direction
-        self.ball.dy = 3  # Delta/change in y - controls the ball's y direction
+        self.ball.dx = 2.8  # Delta/change in x - controls the ball's x direction
+        self.ball.dy = 2.8  # Delta/change in y - controls the ball's y direction
 
     def move(self, paddle, bricks, scoreboard):
         """
