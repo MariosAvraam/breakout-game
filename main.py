@@ -51,6 +51,8 @@ start_message.penup()
 start_message.hideturtle()
 start_message.goto(0, 0)
 start_message.write("Press 'S' to Start", align="center", font=("Courier", 36, "normal"))
+
+
 def start_game():
     global game_started
     start_message.clear()
