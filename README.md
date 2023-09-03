@@ -1,6 +1,8 @@
 # Breakout Game
 Breakout is a classic arcade game, originally developed and published by Atari in 1976. In this version, built using Python's turtle module, players control a paddle which is used to bounce a ball upwards, breaking bricks.
 
+![Screenshot of game](screenshot_image.png)
+
 ## Features
 - Classic Breakout gameplay.
 - Randomly colored bricks for a unique gaming experience each time.
